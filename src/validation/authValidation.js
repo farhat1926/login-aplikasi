@@ -22,5 +22,5 @@ let validateLogin = [
 module.exports = {
     validateRegister: validateRegister,
     validateLogin: validateLogin,
-    validationResult
+    
 };
