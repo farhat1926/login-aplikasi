@@ -24,6 +24,11 @@ configViewEngine(app);
 app.use(connectFlash());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+    console.log("Session Data:", req.session);
+    console.log("User Data:", req.user);
+    next();
+});
 
 // Init Routes
 initWebRoutes(app);

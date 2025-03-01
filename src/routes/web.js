@@ -29,4 +29,17 @@ const initWebRoutes = (app) => {
     router.post("/logout", loginController.postLogOut);
 };
 
+const ensureGoogleUser = (req, res, next) => {
+    if (!req.isAuthenticated() || !req.user.googleId) {
+        req.flash("errors", "Anda harus login dengan Google untuk mengakses halaman ini.");
+        return res.redirect("/login");
+    }
+    next();
+};
+
+// Gunakan middleware di sini
+router.get("/protected", ensureGoogleUser, (req, res) => {
+    res.send("Anda berhasil login dengan Google!");
+});
+
 export default initWebRoutes;
