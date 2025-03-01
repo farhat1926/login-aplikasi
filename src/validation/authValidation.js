@@ -1,4 +1,4 @@
-import { check } from "express-validator";
+import { check, validationResult } from "express-validator";
 
 let validateRegister = [
     check("email", "Invalid email").isEmail().trim(),
@@ -21,5 +21,6 @@ let validateLogin = [
 
 module.exports = {
     validateRegister: validateRegister,
-    validateLogin: validateLogin
+    validateLogin: validateLogin,
+    validationResult
 };
